@@ -1,0 +1,5 @@
+package com.farmeco.dao;
+
+public interface UserFeedbackRepository {
+
+}

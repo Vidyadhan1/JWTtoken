@@ -1,0 +1,12 @@
+package com.farmeco.Service;
+
+import java.util.List;
+
+import com.farmeco.dto.UserDto;
+
+public interface IUserService {
+
+	Boolean register(UserDto user);
+	
+	List<UserDto> getAllUsers();
+}

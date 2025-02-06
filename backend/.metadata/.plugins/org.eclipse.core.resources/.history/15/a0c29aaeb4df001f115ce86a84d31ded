@@ -1,0 +1,8 @@
+package com.farmeco.Service;
+
+import com.farmeco.dto.UserDto;
+
+public interface IUserService {
+
+	Boolean register(UserDto user);
+}

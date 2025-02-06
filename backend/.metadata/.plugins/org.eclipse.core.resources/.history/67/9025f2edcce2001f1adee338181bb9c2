@@ -1,0 +1,13 @@
+package com.farmeco.Service;
+
+import com.farmeco.entity.User;
+
+public class JwtService implements IJwtService {
+
+	@Override
+	public String generateJwToken(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

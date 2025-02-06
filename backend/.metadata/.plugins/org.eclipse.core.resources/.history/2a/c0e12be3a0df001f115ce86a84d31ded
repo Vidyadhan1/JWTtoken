@@ -1,0 +1,24 @@
+package com.farmeco.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalException {
+
+	//RuntimeException
+	@ExceptionHandler(RuntimeException.class)
+	public ProblemDetail handleRuntimeException(RuntimeException e) {
+		return ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+	}
+	
+	
+	//IllegalArgumentException
+	@ExceptionHandler
+	public ProblemDetail handleIllegalArgumentException(IllegalArgumentException e) {
+		return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+	}
+}

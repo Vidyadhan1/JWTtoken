@@ -1,0 +1,10 @@
+package com.farmeco.Service;
+
+import com.farmeco.entity.User;
+
+public interface IJwtService {
+
+	String generateJwToken(User user);
+	
+	String extractUserNamee(String token);
+}

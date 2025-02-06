@@ -1,0 +1,11 @@
+package com.farmeco.Service;
+
+public class HomeService implements IHomeService {
+
+	@Override
+	public String verifyAccount(Integer id, String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

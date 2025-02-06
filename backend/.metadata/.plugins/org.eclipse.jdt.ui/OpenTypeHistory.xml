@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=FarmEco/C:\/Users\/lenovo\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.4.2\/spring-data-jpa-3.4.2.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.4.2=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1738295874885"/>
+    <typeInfo handle="=FarmEco/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.farmeco.Service{IHomeService.java[IHomeService" modifiers="513" timestamp="1738581677459"/>
+    <typeInfo handle="=FarmEco/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.farmeco.Service{IJwtService.java[IJwtService" modifiers="513" timestamp="1738662563412"/>
+</typeInfoHistroy>

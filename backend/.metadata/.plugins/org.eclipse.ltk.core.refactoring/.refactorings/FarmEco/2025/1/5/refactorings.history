@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.farmeco.entiry&apos; to &apos;com.farmeco.entity&apos;&#x0D;&#x0A;- Original project: &apos;FarmEco&apos;&#x0D;&#x0A;- Original element: &apos;FarmEco/src/main/java/com.farmeco.entiry&apos;&#x0D;&#x0A;- Renamed element: &apos;FarmEco/src/main/java/com.farmeco.entity&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;com.farmeco.entiry&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.farmeco.entiry" name="com.farmeco.entity" qualified="false" references="true" stamp="1738301745343" textual="false" version="1.0"/>
+</session>

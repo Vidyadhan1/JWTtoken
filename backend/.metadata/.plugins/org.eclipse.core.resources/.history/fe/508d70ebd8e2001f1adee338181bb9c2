@@ -1,0 +1,5 @@
+package com.farmeco.Service;
+
+public interface IJwtService {
+
+}

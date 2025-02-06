@@ -1,0 +1,5 @@
+package com.farmeco.exception;
+
+public class ResourseNotFoundException {
+
+}

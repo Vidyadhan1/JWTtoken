@@ -1,0 +1,40 @@
+package com.farmeco.controller;
+
+import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.farmeco.Service.IUserService;
+import com.farmeco.dto.UserDto;
+
+@RestController
+	@RequestMapping("/api/user")
+	public class UserController {
+		
+		private IUserService userService;
+		
+		public UserController(IUserService userService) {
+	        this.userService = userService;
+	    }
+		
+		@GetMapping("/all")
+		public ResponseEntity<?> allUsers() {
+			List<UserDto> allUsers =  userService.getAllUsers();
+			if(CollectionUtils.isEmpty(allUsers)) {
+				return new ResponseEntity<>("users not availabble",HttpStatus.NO_CONTENT);
+			}
+			return ResponseEntity.ok(allUsers);
+		}
+		
+		@DeleteMapping("/delete/{id}")
+		public ResponseEntity<?> deleteUserById(@PathVariable Integer id){
+			return ResponseEntity.ok(userService.deleteUserById(id));
+		}
+	}
+

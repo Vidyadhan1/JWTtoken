@@ -1,0 +1,5 @@
+package com.farmeco.entity;
+
+public class Feedback {
+
+}

@@ -1,0 +1,29 @@
+package com.farmeco.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.farmeco.dao.UserFeedbackRepository;
+import com.farmeco.dto.FeedbackDto;
+import com.farmeco.entity.UserFeedback;
+
+@Service
+public class UserFeedbackService implements IUserFeedbackService{
+	
+	@Autowired
+	private UserFeedbackRepository userFeedbackRepo ;
+
+	public String saveFeedback(FeedbackDto feedbackDto) {
+		
+		UserFeedback userFeedback = new UserFeedback();
+		userFeedback.setId(feedbackDto.getUserDto().getId());
+		userFeedback.setName(feedbackDto.getName());
+		userFeedback.setEmail(feedbackDto.getEmail());
+		userFeedback.setSubject(feedbackDto.getSubject());
+		userFeedback.setMessage(feedbackDto.getMessage());
+		
+		userFeedbackRepo.save(userFeedback);
+		return null;
+		
+	}
+}

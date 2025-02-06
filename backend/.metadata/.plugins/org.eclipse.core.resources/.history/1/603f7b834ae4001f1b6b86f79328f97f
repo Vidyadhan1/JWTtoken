@@ -1,0 +1,14 @@
+package com.farmeco.dto;
+
+import lombok.Builder;
+
+@Builder
+public class FeedbackDto {
+	
+	private UserDto userDto;
+
+	private String name;
+    private String email;
+    private String subject;
+    private String message;
+}

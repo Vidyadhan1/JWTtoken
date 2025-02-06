@@ -1,0 +1,5 @@
+package com.farmeco.config.security;
+
+public class CustomUserDetails {
+
+}

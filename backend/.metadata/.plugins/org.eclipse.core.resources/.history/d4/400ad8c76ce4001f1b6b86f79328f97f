@@ -1,0 +1,6 @@
+package com.farmeco.util;
+
+public class GetLoggedInUserId {
+
+	
+}

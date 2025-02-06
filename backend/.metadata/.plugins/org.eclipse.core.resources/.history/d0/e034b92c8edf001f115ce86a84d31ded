@@ -1,0 +1,5 @@
+package com.farmeco.entiry;
+
+public class User {
+
+}

@@ -1,0 +1,100 @@
+package com.farmeco.Service;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.UUID;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+
+import com.farmeco.dao.RoleRepository;
+import com.farmeco.dao.UserRepository;
+import com.farmeco.dto.EmailRequest;
+import com.farmeco.dto.UserDto;
+import com.farmeco.entity.AccountStatus;
+import com.farmeco.entity.Role;
+import com.farmeco.entity.User;
+import com.farmeco.exception.ResourseNotFoundExceptionClass;
+import com.farmeco.util.Validation;
+
+import jakarta.mail.MessagingException;
+
+@Service
+public class UserService implements IUserService {
+
+	@Autowired
+	private Validation validation;
+	
+	@Autowired
+	private ModelMapper mapper;
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private RoleRepository roleRepo;
+	
+	@Autowired
+	private EmailService emailService;
+	
+	
+	@Override
+	public Boolean register(UserDto userDto) throws UnsupportedEncodingException, MessagingException {
+		
+		validation.validateUser(userDto);
+		User newUser = mapper.map(userDto, User.class);
+		
+		setRoles(userDto,newUser);
+		User savedUser=userRepo.save(newUser);
+		
+		if(!ObjectUtils.isEmpty(savedUser)) {
+			accountConfirmationMail(savedUser);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private void accountConfirmationMail(User savedUser) throws UnsupportedEncodingException,MessagingException {
+		String msg="<h1>Hello User</h1>\r\n"
+				+ "<p>Your Account created Successfully..</p>\r\n"
+				+ "<p>To avtivate account <a href=\"#\">Click here</a></p>\r\n"
+				+ "<b> Thanks by joining FarmEco.</b>";
+		EmailRequest emailRequest= EmailRequest.builder()
+				.to(savedUser.getEmail())
+				.subject("Account Create Successfully!!")
+				.title("Account Coonfirmation Mail")
+				.message(msg)
+				.build();
+emailService.sendMail(emailRequest);
+	}
+
+	private void setStatus(User newUser) {
+		AccountStatus status = new AccountStatus();
+		status.setIsActive(false);
+		status.setVerification(UUID.randomUUID().toString());
+	}
+	
+	private void setRoles(UserDto userDto, User newUser) {
+		List<Integer> rolesIds= userDto.getRoles().stream().map(role->role.getId()).toList();
+		List<Role> roles= roleRepo.findAllById(rolesIds);
+		newUser.setRoles(roles);
+	}
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		
+		return userRepo.findAll().stream().map(user->mapper.map(user, UserDto.class)).toList();
+	}
+
+	@Override
+	public String deleteUserById(Integer id) {
+		userRepo.findById(id).orElseThrow(()->new ResourseNotFoundExceptionClass("User Not Found"));
+		userRepo.delete(null);
+		return "user deleted succesfully";
+	}
+
+	
+}

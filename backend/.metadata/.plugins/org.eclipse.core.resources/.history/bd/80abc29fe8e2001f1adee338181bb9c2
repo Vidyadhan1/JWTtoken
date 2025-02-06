@@ -1,0 +1,42 @@
+package com.farmeco.config.security;
+
+import java.io.IOException;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.farmeco.Service.IJwtService;
+import com.farmeco.Service.JwtService;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class JwtFilter extends OncePerRequestFilter{
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private IJwtService jwtService;
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		
+		String authHeader = request.getHeader("Authorization");
+		String token=null;
+		
+		if(authHeader != null && authHeader.startsWith("Bearer ")) {
+			token=authHeader.substring(7);
+			userDetailsService.loadUserByUsername(token)
+		}
+		
+		filterChain.doFilter(request, response);
+		
+	}
+
+}

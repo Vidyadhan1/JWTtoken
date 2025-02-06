@@ -1,0 +1,10 @@
+spring.application.name=FarmEco
+
+server.port=7100
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/farmeco?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=passsword
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql: true

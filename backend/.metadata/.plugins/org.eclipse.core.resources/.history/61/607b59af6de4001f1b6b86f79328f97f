@@ -1,0 +1,16 @@
+package com.farmeco.util;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.farmeco.config.security.CustomUserDetails;
+
+public class LoggedInUserId {
+
+	public int getLoggedInUserId() {
+		CustomUserDetails userDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Integer id = userDetails.getUser().getId();
+		
+		return id;
+		
+	}
+}

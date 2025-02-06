@@ -1,0 +1,10 @@
+package com.farmeco.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.farmeco.entity.UserFeedback;
+
+public interface UserFeedbackRepository extends JpaRepository<UserFeedback, Long>{
+
+	
+}
